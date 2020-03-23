@@ -1,0 +1,11 @@
+{
+  "name": "books_study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:GASHIRA-E/books_study.git",
+  "author": "GASHIRA-E <dsteams@outlook.jp>",
+  "license": "MIT",
+  "scripts": {
+    "doc": "docsify serve docs"
+  }
+}

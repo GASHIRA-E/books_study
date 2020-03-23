@@ -21,7 +21,7 @@
 3. unknown値が特定の型であることを想定した事柄は行えない(以下コード参考)
 
 - 3番はつまりどういうことかというと
-```typescript
+```ts
 let a: unknown = 30;
 let b = a === 123;
 let c = a +10; // エラー `+` は数値の持っている機能なので unknown では使用できない
@@ -46,4 +46,52 @@ let f: true = false // Error true型にfalseは入れられない
 
 #### number
 
+- number型は基本的にはTypeScriptに型を推論させる。
+- 変数宣言時にnumberを明示的に片付けする理由は特にない
 
+```ts
+let a = 100; // 変数に代入するだけなら肩を推論させていい
+let b: number = 200; // 代入で明示的に宣言する理由は特にない
+```
+
+> Tips: 大きな数値を扱う時は_で区切ることができる `let oneMillion = 1_000_000`
+
+#### bigint
+
+- bigintはJabaScriptでもステージ段階の機能
+- 大きな整数を扱うことができる
+- number型は2^53まで扱えるが、bigint型はそれより大きな整数も表すことができる
+
+```ts
+let a = 1234n; // bigint型
+let b = 12.34n; // Error 整数じゃないのでエラー
+let c: bigint = 300; // 300はbigintじゃない（number）のでエラー
+```
+
+#### string
+
+- 文字列とそれを使ってできること
+- number boolean同様に、可能な限り型を推論させるべき
+
+#### symbol
+
+- ES2015で導入されたもの
+- マップにおいて、文字列キーの代わりとして
+
+```ts
+let a = Symbol('a'); // symbol
+let b: symbol = Symbol('b');
+```
+
+- symbolは一意な物なので、他のどのsymbolとも一致しないという特徴がある。
+- constを宣言された時は、完全にユニークな値が設定されるので`unique symbol`型が設定される。
+
+```ts
+const a = Symbol('a'); // typeof a
+const b: unique symbol = Symbol('b');
+let c: unique symbol = Symbol('c'); // Error letにunique symbolは設定できない
+const d = a === a; // OK
+const e = a === b; // Error unique symbol同士は常にfalseを返すので
+```
+
+#### オブジェクト
