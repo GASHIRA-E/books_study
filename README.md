@@ -8,4 +8,4 @@
 
 |書籍|URL|
 |:--:|:--|
-|O'REILLY プログラミング TypeScript|hoge|
+|O'REILLY プログラミング TypeScript|https://gashira-e.github.io/books_study/#/O-REILLY_TypeScript/|
