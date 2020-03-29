@@ -3,6 +3,7 @@
 
 ## 使用しているライブラリ
 - [docsify](https://docsify.js.org/#/)
+  - [docsify simple dark theme](https://jhildenbiddle.github.io/docsify-themeable/#/themes?id=simple-dark)
 
 ## 書籍
 
