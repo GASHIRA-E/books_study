@@ -7,5 +7,8 @@
   "license": "MIT",
   "scripts": {
     "doc": "docsify serve docs"
+  },
+  "dependencies": {
+    "docsify-cli": "^4.4.0"
   }
 }

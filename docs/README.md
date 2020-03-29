@@ -1,3 +1,3 @@
 # GASHIRA's read memo
 
-- [O'REIILY TypeScript](/O-REILLY_TypeScript/)
+- [O'REILLY TypeScript](/O-REILLY_TypeScript/)
