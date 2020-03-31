@@ -255,3 +255,69 @@ a[2] = 6; // Error もちろん現在持っている値も変更できない
 - 配列でreadonlyばかり使っていると、配列のコピーなどでメモリを余計に使用する構文を書くことになるかもしれないので、使う場所は考慮する必要がある。
 
 #### null,undefined,void,never
+
+- TSである物の欠如を表す値
+- この４つの違い
+
+|型|用途|
+|:-|:--|
+|null|値が欠如している状態(エラーの返り値など)|
+|undefined|値がまだ定義されていない|
+|void|返り値がない関数が返す|
+|never|エラーをthrow or whileで回り続けて呼び出し元に何も返すことがない(neverを返す)|
+
+#### 列挙型
+
+- enum
+- 順序付けされていないデータ構造
+
+```ts
+enum Status {
+  Success,
+  Error
+};
+
+let currentStatus = Status.Success;
+
+enum SmartPhone {
+  IOs = 1,
+  Android = 2
+}
+
+let phoneType = SmartPhone['IOs'];
+
+enum Color {
+  Red = '#F00',
+  Green = '#0F0',
+  Blue = '#00F'
+};
+```
+
+- 数値のマッピングも可能
+- 文字列も扱うことが可能
+
+- enumでの存在しない値へのアクセス
+
+```ts
+enum A {
+  First = 1,
+  Second = 2
+}
+
+let a = A[3]; // undefined
+
+const enum B {
+  First = 1,
+  Second = 2
+}
+
+let b = B[1]; // Error 数値からのアクセスが禁止になる
+b = B['Third']; // Error 存在しない値はエラー
+```
+
+- 扱い方意外にも生成されるコードにも違いがある [参考ブログ](https://kenjimorita.jp/enumvs-const-enum/)
+- 上記の結果から、`const enum`を極力使用するべき。（書籍では列挙型は避けていいと書いてある）
+
+### まとめ
+
+- letやvarなら型の推論(stringやnumberなど)をするが、constだとその値が型になる。
