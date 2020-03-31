@@ -9,3 +9,5 @@
   - コンパイルの仕組み（簡単に）や環境構築について
 - [3章：型について](/O-REILLY_TypeScript/section3/)
   - 組み込み型について
+- [4章：関数](/O-REILLY_TypeScript/section4/)
+  - メインディッシュ
