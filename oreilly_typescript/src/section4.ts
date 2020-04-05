@@ -14,3 +14,35 @@ function generateDate(this: Date) {
   return `${this.getMonth() + 1}/${this.getDate()}`;
 }
 generateDate.call(new Date);
+
+// ジェネレーター
+
+function* createNum(): Generator<number> {
+  let n = 0;
+  while(true) {
+    yield n+=1;
+  }
+}
+
+let num = createNum();
+num.next();
+num.next();
+
+let numbers = {
+  *[Symbol.iterator]() {
+    for(let n = 1; n <= 10; n += 1) {
+      yield n;
+    }
+  }
+}
+
+function times(
+  f: (index: number) => void,
+  n: number
+) {
+  for(let i = 0; i < n; i+=1) {
+    f(i);
+  }
+}
+
+times((n) => console.log(n * 2), 3);

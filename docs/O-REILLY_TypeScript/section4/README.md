@@ -71,3 +71,54 @@ function generateDate(this: Date) {
 }
 generateDate.call(new Date);
 ```
+
+#### ジェネレーター
+
+- yieldを使用してcallされたタイミングで次のyieldまで処理を実行
+- ジェネリクスで返す型明示できる
+
+```ts
+function* createNum(): Generator<number> {
+  let n = 0;
+  while(true) {
+    yield n+=1;
+  }
+}
+
+let num = createNum();
+num.next();
+num.next();
+```
+
+#### イテレーター
+
+- イテラブルオブジェクトを`next`を利用するための方法
+- イテラブルオブジェクト：`Symbol.iterator`と呼ばれるプロパティを含んでいるオブジェクト
+
+#### 呼び出しシグネチャ
+
+- 関数を定義したらその型は`Function`となる。だが、`object`が全てのオブジェクトを表現するように、全ての関数の包括的な型
+- 関数の型は`(a: number,b: number) => number`**呼び出しシグネチャ**や**型シグネチャ**と呼ばれる
+
+```ts
+type Log = (message: string, userId?: string) => void
+const showLog: Log = (message, userId) => {
+  console.log(message, 'userId', userId);
+}
+```
+
+#### 文脈的型付け
+
+```ts
+function times(
+  f: (index: number) => void,
+  n: number
+) {
+  for(let i = 0; i < n; i+=1) {
+    f(i);
+  }
+}
+
+times((n) => console.log(n * 2), 3);
+// インラインで記述することで、引数の関数が型推論される
+```
