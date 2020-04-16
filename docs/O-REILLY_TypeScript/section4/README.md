@@ -125,4 +125,22 @@ times((n) => console.log(n * 2), 3);
 
 #### オーバーロードされた関数の型
 
-- 
+- オーバーロードとはいうが、言語機能としてのサポートではなく型としてのサポートを行うことができる
+
+```ts
+type Reservation = string;
+
+type Reserve = {
+  (from: Date, to: Date, destination: string): Reservation
+  (from: Date, destination: string): Reservation
+}
+
+// 実装する時はこうなる
+const reserve: Reservation = (from: Date, toOrDestination: Date | string, destination?: string) => {
+  if(toOrDestination instanceof Date && destination !== undefined) {
+    // 引数３つ
+  } else if (typeof toOrDestination === 'string') {
+    // 引数２つ
+  }
+}
+```
