@@ -170,3 +170,18 @@ type Filter = {
 ```ts
 type Filter<T> = (array: T[], f: (item: T) => boolean) => T[];
 ```
+
+#### ジェネリックの型推論
+
+- tsにおいて、ジェネリックはほとんどの場合型を推論してくれる
+
+```ts
+let filter = <T>(array: T[], f: (item: T) => boolean): T[] => {
+  let list: T[] = [];
+  array.forEach(item => f(item) && list.push(item));
+  return list;
+};
+
+// 呼び出したタイミングでTをnumberと推論してくれる
+console.log(filter([1, 2, 3], (n) => n>2));
+```

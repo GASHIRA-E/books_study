@@ -66,4 +66,12 @@ const reserve: Reserve = (from: Date, toOrDestination: Date | string, destinatio
   return 'other';
 };
 
-type Filter<T> = (array: T[], f: (item: T) => boolean) => T[];
+// type Filter<T> = (array: T[], f: (item: T) => boolean) => T[];
+
+let filter = <T>(array: T[], f: (item: T) => boolean): T[] => {
+  let list: T[] = [];
+  array.forEach(item => f(item) && list.push(item));
+  return list;
+};
+
+console.log(filter([1, 2, 3], (n) => n>2));
