@@ -185,3 +185,20 @@ let filter = <T>(array: T[], f: (item: T) => boolean): T[] => {
 // 呼び出したタイミングでTをnumberと推論してくれる
 console.log(filter([1, 2, 3], (n) => n>2));
 ```
+
+#### ジェネリック型エイリアス
+
+- 型エイリアスを宣言したら、型の割り当ての時には明示的に型パラメータをバインドする必要がある
+
+```ts
+type Filter<T> = (array: T[], f: (item: T) => boolean) => T[];
+
+// ここでFilterを使用するときにnumberを指定する
+const filter: Filter<number> = (list, f) => list.filter(_=>f(_));
+```
+
+#### 制限付きポリモーフィズム
+
+- これはポリモーフィズムを実装するなら必要な知識
+- extendなどを使用して、ジェネリックに制限を持たせることで、わたってくる型の安全性を保障する
+
