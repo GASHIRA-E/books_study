@@ -10,3 +10,4 @@
 |書籍|URL|
 |:--:|:--|
 |O'REILLY プログラミング TypeScript|https://gashira-e.github.io/books_study/#/O-REILLY_TypeScript/|
+|PHPフレームワーク Laravel入門 第2版|https://gashira-e.github.io/books_study/#/laravel_biginner/|
