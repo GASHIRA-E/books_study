@@ -55,12 +55,15 @@ type Reserve = {
 }
 
 // 実装する時はこうなる
-const reserve: Reservation = (from: Date, toOrDestination: Date | string, destination?: string) => {
+const reserve: Reserve = (from: Date, toOrDestination: Date | string, destination?: string) => {
   if(toOrDestination instanceof Date && destination !== undefined) {
     // 引数３つ
+    return `3`;
   } else if (typeof toOrDestination === 'string') {
     // 引数２つ
+    return '2';
   }
-}
+  return 'other';
+};
 
 type Filter<T> = (array: T[], f: (item: T) => boolean) => T[];
