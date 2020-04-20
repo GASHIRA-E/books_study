@@ -98,7 +98,7 @@ num.next();
 #### 呼び出しシグネチャ
 
 - 関数を定義したらその型は`Function`となる。だが、`object`が全てのオブジェクトを表現するように、全ての関数の包括的な型
-- 関数の型は`(a: number,b: number) => number`**呼び出しシグネチャ**や**型シグネチャ**と呼ばれる
+- 関数の型は`(a: number,b: number) => number` **呼び出しシグネチャ** や **型シグネチャ** と呼ばれる
 
 ```ts
 type Log = (message: string, userId?: string) => void
