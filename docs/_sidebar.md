@@ -5,3 +5,5 @@
   - [3章：型について](/O-REILLY_TypeScript/section3/)
   - [4章：関数](/O-REILLY_TypeScript/section4/)
 - [PHPフレームワーク Laravel入門 第2版](/laravel_biginner/)
+  - [Chapter1：Laravelを準備する](/laravel_biginner/section1/)
+  - [Chapter2：ルーティングとコントローラ](/laravel_biginner/section2/)
