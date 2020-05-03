@@ -6,3 +6,5 @@
   - Laravelの全体像
 - [Chapter2：ルーティングとコントローラ](/laravel_biginner/section2/)
   - controller作成など
+- [Chapter3：ビューとテンプレート](/laravel_biginner/section3/)
+  - PHPテンプレートの利用

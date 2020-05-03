@@ -7,3 +7,4 @@
 - [PHPフレームワーク Laravel入門 第2版](/laravel_biginner/)
   - [Chapter1：Laravelを準備する](/laravel_biginner/section1/)
   - [Chapter2：ルーティングとコントローラ](/laravel_biginner/section2/)
+  - [Chapter3：ビューとテンプレート](/laravel_biginner/section3/)
