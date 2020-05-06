@@ -306,3 +306,122 @@ $counter++;
       インデックスページ
     @endsection
   ```
+
+#### コンポーネントについて
+
+- `@component`ディレクティブ
+  - コンポーネントの組み込み
+  ```
+    @component(名前)
+      <p>{{$slot_1}}</p>
+    @endcomponent
+  ```
+
+- スロットについて
+  ```
+  @component('components.message')
+    @slot(slot_1)
+      slotメッセージ
+    @endslot
+  @endcomponent
+  ```
+
+#### サブビューについて
+
+- サブビュー
+
+```
+@include('components.message', [
+  'msg_title'=>'OK',
+  'msg_content'=>'サブビューです。'
+])
+```
+
+#### eachに夜コレクションビュー
+
+- `@each`による表示を利用する
+
+```
+  @each('components.item', $data, 'item')
+```
+
+### サービスとビューコンポーザ
+
+#### ビューコンポーザとは
+
+- コントローラとは別にビジネスロジックを使うって必要な情報を処理する機能
+- ビューをレンダリングする際に使用する関数、クラス。
+
+#### サービスとサービスプロパイダ
+
+- サービスプロパイダの定義
+
+```php
+  namespace App\Providers;
+
+  use Illuminate\Support\Facades\View;
+  use Illuminate\Support\ServiceProvider;
+
+  class プロパイダクラス extends ServiceProvider
+  {
+    public function register()
+    {
+      // コンポーザの設定
+    }
+
+    public function boot()
+    {
+      // コンポーザの設定
+    }
+  }
+```
+
+- `boot`メソッドは**ブートストラップ処理**(アプリケーションが起動する際に割り込んで実行される処理)を設定する
+
+#### providerを作成
+
+- artisanを利用すれば簡単に作成できる。
+- `php artisan make:provider HelloServiceProvider`
+
+- `View::composer(ビューの指定, 関数またはクラス)`というメソッドを実行することで、ビューコンポーザを設定する。
+
+```php
+  View::composer(
+      'hello.index', function($view) {
+          $view->with('view_message', 'composer message!');
+      }
+  );
+```
+
+- `$view`が用意されている。withというメソッドで変数などを追加するためのもの。
+
+#### サービスプロパイダの登録
+
+- `server/config/app.php`の`'providers' => [`に`App\Providers\HelloServiceProvider::Class,`を追加
+- これで動くようになる
+
+#### ビューコンポーザクラスの作成
+
+- `server/app/Http/Composers/HelloComposer.php`を作成
+- Composerを設定する
+
+```php
+namespace App\Http\Composers;
+
+use Illuminate\View\View;
+
+class HelloComposer {
+  public function compose(View $view) {
+    $view->with('view_message', 'this view is "'.$view->getName().'"!!');
+  }
+}
+```
+
+- `server/app/Providers/HelloServiceProvider.php`
+- providerの指定でクラスを指定できる
+
+```php
+View::composer(
+    'hello.index', 'App\Http\Composers\HelloComposer'
+);
+```
